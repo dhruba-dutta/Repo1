@@ -1,22 +1,18 @@
 <?php
 
 echo "hello world!";
-
-Name: <input type="text" name="name" value="<?php echo $name;?>">
-
-E-mail: <input type="text" name="email" value="<?php echo $email;?>">
-
-Website: <input type="text" name="website" value="<?php echo $website;?>">
-
-Comment: <textarea name="comment" rows="5" cols="40"><?php echo $comment;?></textarea>
-
-Gender:
-<input type="radio" name="gender"
-<?php if (isset($gender) && $gender=="female") echo "checked";?>
-value="female">Female
-<input type="radio" name="gender"
-<?php if (isset($gender) && $gender=="male") echo "checked";?>
-value="male">Male
-<input type="radio" name="gender"
-<?php if (isset($gender) && $gender=="other") echo "checked";?>
-value="other">Other
+$name = $_POST['name'];
+$email = $_POST['email'];
+$phone = $_POST['phone'];
+$call = $_POST['call'];
+$website = $_POST['website'];
+$priority = $_POST['priority'];
+$type = $_POST['type'];
+$message = $_POST['message'];
+$formcontent=" From: $name \n Phone: $phone \n Call Back: $call \n Website: $website \n Priority: $priority \n Type: $type \n Message: $message";
+$recipient = "youremail@here.com";
+$subject = "Contact Form";
+$mailheader = "From: $email \r\n";
+mail($recipient, $subject, $formcontent, $mailheader) or die("Error!");
+echo "Thank You!";
+?>
